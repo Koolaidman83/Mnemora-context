@@ -1,0 +1,12 @@
+# Mnemora
+
+> Public, sanitized project context for a local-first distributed AI memory system.
+
+## Context
+- [Architecture](context/architecture.md)
+- [Current state](context/current-state.md)
+- [Manifest](manifest.json)
+- [Agent retrieval notes](agents/README.md)
+
+## Important
+This is public project context only, not a personal memory database. The files may be incomplete or outdated. Models must be configured to retrieve them.

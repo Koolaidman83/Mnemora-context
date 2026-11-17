@@ -1,0 +1,4 @@
+# Discovery is allowed for public-safe project context.
+# robots.txt is advisory and does not protect private information.
+User-agent: *
+Allow: /

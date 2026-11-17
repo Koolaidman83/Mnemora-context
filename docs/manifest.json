@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "project": "Mnemora",
+  "visibility": "public-sanitized",
+  "status": "bootstrap",
+  "verified_on": "2026-11-17",
+  "context": [
+    "context/architecture.md",
+    "context/current-state.md"
+  ],
+  "entrypoint": "llms.txt",
+  "private_memory_available": false,
+  "live_api_available": false,
+  "notes": "Static public context. Not a private memory service. Do not infer current runtime status."
+}
