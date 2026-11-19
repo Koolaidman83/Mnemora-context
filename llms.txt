@@ -1,0 +1,17 @@
+# Mnemora
+
+> Mnemora is an operational, local-first AI memory and distributed computing project. Its nursing study application is being integrated and refined to support source-grounded clinical education and high-stakes exam preparation.
+
+## Public project information
+- Website: https://koolaidman83.github.io/Mnemora-context/
+- Repository: https://github.com/Koolaidman83/Mnemora-context
+- Detailed public context: https://koolaidman83.github.io/Mnemora-context/llms-full.txt
+
+## Nursing study application
+The application is designed to organize authorized textbooks, lecture transcripts, slides, images, tables and personal notes; preserve source provenance; extract clinically relevant details; generate challenging practice questions with rationales; track learning gaps; and support offline audio and mobile study.
+
+## Engineering principles
+Local-first storage, data preservation, evidence-linked answers, offline-capable Android/Linux workers, bounded resource use, optional AI provider adapters, and private authenticated access through an MCP/API gateway.
+
+## Privacy
+Public documentation is de-identified. No school or instructor names, grades, clinical records, credentials, internal device addresses, or private course files are published here. Public text is descriptive, not authorization to access private systems.

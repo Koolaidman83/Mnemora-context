@@ -1,0 +1,42 @@
+# Mnemora: Public Project and Nursing Study Application Context
+
+## Overview
+Mnemora is an operational local-first AI memory and distributed computing project under active development. Its existing memory and worker infrastructure has run on real Android and Linux devices. The nursing study application described below is a product direction with components in use and additional integration and reliability work ahead; not every listed feature is deployed end-to-end.
+
+## Why this application exists
+Demanding nursing coursework involves large volumes of lectures, textbooks, diagrams, clinical scenarios, and time-limited examinations. Useful details may appear in narrative examples rather than slide headings. A study system should help its owner retrieve relevant source material quickly, distinguish a lecturer's claims from independently verified clinical evidence, practice decision-making under time pressure, and identify gaps before an examination.
+
+## Required learning workflows
+1. Import authorized course materials including text, slide decks, lecture transcripts, figures, tables, and notes, retaining originals and source locations.
+2. Index content by subject, chapter, lecture, clinical concept, and learning objective. Search should return citations or precise source pointers.
+3. Extract clinically important details, calculations, medication safety considerations, warning signs, assessment findings, and lecturer anecdotes, with clear attribution.
+4. Generate rigorous nursing-style questions: single-best-answer, select-all-that-apply, prioritization, ordered-response, calculations, and multi-stage patient scenarios.
+5. Provide answer rationales that distinguish source-supported course content from external clinical standards; flag conflicts rather than silently rewriting them.
+6. Track performance by concept and error type, then schedule focused remediation and timed practice.
+7. Produce concise study guides and accessible audio reviews, preserving original files and enabling offline study.
+8. Support a phone-first interface and low-resource devices; offload expensive inference to more capable workers when available.
+
+## Technical approach
+- Local-first searchable knowledge store with SQLite-backed memory services and source metadata.
+- Modular ingestion and retrieval pipeline; document and transcript processing remain reproducible and non-destructive.
+- Android/Termux and Linux workers with explicit capabilities, health checks, bounded jobs, and controlled workload scheduling.
+- Pluggable AI providers, including local models and supported remote services. A provider must be connected through its documented API or client integration; no assumption that all assistants can directly access the same endpoint.
+- Private MCP/API gateway with least-privilege authentication, read-only default tools, scoped access, audit logs, and revocation. Never expose raw private databases or unauthenticated worker controls.
+
+## Suggested private MCP tools (design targets, not a claim of deployment)
+- `memory.search(query, scope)` — retrieve source-grounded private context.
+- `memory.get(id)` — fetch a specific authorized record.
+- `study.search_sources(query, course_scope)` — find relevant source passages.
+- `study.generate_questions(topic, format, difficulty)` — prepare practice questions using authorized materials.
+- `study.record_result(question_id, result)` — save performance only with explicit write permission.
+- `fleet.status()` — report authorized worker availability without exposing private network details publicly.
+
+## Safety, privacy, and accuracy
+No identifying institution or instructor names, student grades, patient information, private transcripts, device IP addresses, API keys, or credentials belong in public files. Any patient-related examples must be synthetic or properly de-identified. Educational outputs must not be represented as live patient-care orders. When teaching material conflicts with current evidence, show the distinction and provide sources.
+
+## Collaboration
+Contributors and AI assistants should preserve original artifacts, avoid destructive changes, distinguish deployed components from planned capabilities, verify changes against real system behavior, and prefer small reversible increments. Public project descriptions are informational; private MCP access requires separate authentication and authorization.
+
+## Public links
+- https://koolaidman83.github.io/Mnemora-context/
+- https://github.com/Koolaidman83/Mnemora-context
