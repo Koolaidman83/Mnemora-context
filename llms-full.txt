@@ -40,3 +40,6 @@ Contributors and AI assistants should preserve original artifacts, avoid destruc
 ## Public links
 - https://koolaidman83.github.io/Mnemora-context/
 - https://github.com/Koolaidman83/Mnemora-context
+
+## Public knowledge expansion
+The public library now covers nursing study architecture, generalized assessment-pattern modeling, EMS workflows, clinical and lab competencies, mathematics and engineering learning architectures, and source provenance. These are initial frameworks intended for iterative expansion with properly licensed, source-grounded material. See `knowledge/README.md` for navigation. An MCP service is planned separately and should not be represented as deployed until its tools pass end-to-end tests.

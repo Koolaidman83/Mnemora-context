@@ -15,3 +15,13 @@ Local-first storage, data preservation, evidence-linked answers, offline-capable
 
 ## Privacy
 Public documentation is de-identified. No school or instructor names, grades, clinical records, credentials, internal device addresses, or private course files are published here. Public text is descriptive, not authorization to access private systems.
+
+## Public knowledge library
+- [Nursing study architecture](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/nursing/study-architecture.md)
+- [Assessment patterns](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/nursing/assessment-patterns.md)
+- [EMS workflows](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/ems/workflow-architecture.md)
+- [Clinicals and labs](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/clinicals/competency-mapping.md)
+- [Mathematics](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/mathematics/learning-architecture.md)
+- [Engineering](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/engineering/learning-architecture.md)
+
+These are published frameworks, not private source material. llms.txt does not automatically install persistent memory in third-party AI models.
