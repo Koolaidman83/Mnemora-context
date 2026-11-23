@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "network": "Mnemora",
+  "nodes": [
+    {
+      "id": "mike6",
+      "region": "us-east",
+      "platform": "linux-amd64",
+      "roles": ["memory-primary", "coordinator"],
+      "capabilities": ["sqlite", "memory-search", "mcp-backend"],
+      "status": "unknown",
+      "visibility": "private",
+      "inference": "disabled-by-default"
+    },
+    {
+      "id": "tcl",
+      "region": "us-east",
+      "platform": "android-termux",
+      "roles": ["memory-secondary", "worker"],
+      "capabilities": ["sqlite", "rclone", "task-execution"],
+      "status": "unknown",
+      "visibility": "private",
+      "inference": "restricted"
+    },
+    {
+      "id": "kirsten-laptop",
+      "region": "us-east",
+      "platform": "windows",
+      "roles": ["document-processing", "compute-worker"],
+      "capabilities": ["pymupdf", "text-extraction", "batch-processing"],
+      "status": "unknown",
+      "visibility": "private",
+      "inference": "available-on-demand"
+    },
+    {
+      "id": "mnemora-pacific",
+      "region": "ap-southeast",
+      "platform": "linux-vps",
+      "roles": ["regional-gateway", "collaboration"],
+      "capabilities": ["mcp", "knowledge-mirror", "staging-memory"],
+      "status": "planned",
+      "visibility": "collaborative",
+      "inference": "not-configured"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0",
+  "protocol": "Mnemora Universal Memory",
+  "transport": "MCP",
+  "record_schema": {
+    "required": [
+      "id",
+      "content",
+      "classification",
+      "source",
+      "created_at"
+    ],
+    "fields": {
+      "id": "string",
+      "content": "string",
+      "classification": "public|private|collaborative",
+      "source": "string",
+      "created_at": "ISO-8601 timestamp",
+      "origin_node": "string",
+      "provenance": "object",
+      "permissions": "object",
+      "digest": "string"
+    }
+  },
+  "tools": [
+    {
+      "name": "memory_search",
+      "arguments": ["query", "scope", "limit"],
+      "access": "read"
+    },
+    {
+      "name": "memory_get",
+      "arguments": ["id"],
+      "access": "read"
+    },
+    {
+      "name": "memory_stage",
+      "arguments": ["content", "source", "classification"],
+      "access": "staging-write"
+    }
+  ],
+  "security": {
+    "default_classification": "private",
+    "deny_by_default": true,
+    "authentication_required": true,
+    "authorization_per_tool": true,
+    "public_memory_export": "explicit-approval-only",
+    "private_memory_replication": "disabled",
+    "collaborative_writes": "staging-only",
+    "secrets_in_repository": false
+  },
+  "compatibility_targets": [
+    "OpenAI",
+    "Anthropic",
+    "DeepSeek",
+    "StepFun",
+    "local-models"
+  ]
+}
