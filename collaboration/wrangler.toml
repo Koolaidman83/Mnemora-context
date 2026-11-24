@@ -1,0 +1,7 @@
+name = "mnemora-collaboration-mcp"
+main = "worker.js"
+compatibility_date = "2025-04-01"
+[[d1_databases]]
+binding = "DB"
+database_name = "mnemora-collaboration"
+database_id = "c26f70d3-a46f-406a-8e6b-5003cd0e16a0"

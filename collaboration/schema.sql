@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS tasks (id TEXT PRIMARY KEY, instructions TEXT NOT NULL, creator TEXT NOT NULL, claimant TEXT, status TEXT NOT NULL DEFAULT 'open', revision INTEGER NOT NULL DEFAULT 0, result TEXT, review TEXT, updated TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS audit (seq INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT NOT NULL, actor TEXT NOT NULL, action TEXT NOT NULL, revision INTEGER NOT NULL, created TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TRIGGER IF NOT EXISTS task_created AFTER INSERT ON tasks BEGIN INSERT INTO audit(task_id,actor,action,revision) VALUES(new.id,new.creator,'create',new.revision); END;
+CREATE TRIGGER IF NOT EXISTS task_changed AFTER UPDATE ON tasks BEGIN INSERT INTO audit(task_id,actor,action,revision) VALUES(new.id,CASE WHEN new.status='reviewed' THEN new.creator ELSE new.claimant END,new.status,new.revision); END;
