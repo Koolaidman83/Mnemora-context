@@ -43,3 +43,5 @@ Contributors and AI assistants should preserve original artifacts, avoid destruc
 
 ## Public knowledge expansion
 The public library now covers nursing study architecture, generalized assessment-pattern modeling, EMS workflows, clinical and lab competencies, mathematics and engineering learning architectures, and source provenance. These are initial frameworks intended for iterative expansion with properly licensed, source-grounded material. See `knowledge/README.md` for navigation. An MCP service is planned separately and should not be represented as deployed until its tools pass end-to-end tests.
+
+Public knowledge expansion also includes prehospital critical care to nursing assessment bridging (`knowledge/nursing/prehospital-clinical-bridging.md`) using synthetic scenarios and the nine-part nursing ontology.

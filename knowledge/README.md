@@ -2,6 +2,7 @@
 
 - [Nursing study architecture](nursing/study-architecture.md)
 - [Assessment-pattern modeling](nursing/assessment-patterns.md)
+- [Prehospital clinical bridging](nursing/prehospital-clinical-bridging.md)
 - [EMS workflow architecture](ems/workflow-architecture.md)
 - [Clinicals and competency mapping](clinicals/competency-mapping.md)
 - [Mathematics learning architecture](mathematics/learning-architecture.md)

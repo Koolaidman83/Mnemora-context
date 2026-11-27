@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.2.0",
+  "default_deny": true,
+  "node_overrides": {},
+  "workloads": {
+    "general": {"allowed_regions": ["*"], "allowed_visibilities": ["private", "collaborative"], "minimum_ram_mb": 0},
+    "private-memory": {"allowed_regions": ["us-east"], "allowed_visibilities": ["private"], "minimum_ram_mb": 0},
+    "collaborative-memory": {"allowed_regions": ["*"], "allowed_visibilities": ["collaborative"], "minimum_ram_mb": 0}
+  }
+}

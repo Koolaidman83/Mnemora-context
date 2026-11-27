@@ -19,6 +19,7 @@ Public documentation is de-identified. No school or instructor names, grades, cl
 ## Public knowledge library
 - [Nursing study architecture](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/nursing/study-architecture.md)
 - [Assessment patterns](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/nursing/assessment-patterns.md)
+- [Prehospital clinical bridging](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/nursing/prehospital-clinical-bridging.md)
 - [EMS workflows](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/ems/workflow-architecture.md)
 - [Clinicals and labs](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/clinicals/competency-mapping.md)
 - [Mathematics](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/mathematics/learning-architecture.md)
