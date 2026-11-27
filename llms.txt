@@ -29,3 +29,6 @@ These are published frameworks, not private source material. llms.txt does not a
 ## Educational and fictional corpora
 - [Nursing IV](knowledge/nursing/n4/llms.txt)
 - [Glovertucky fiction](knowledge/fiction/koolaid-man/glovertucky.md)
+
+## Founder biography
+- [Founder distinctions](knowledge/founder/distinctions.md)
