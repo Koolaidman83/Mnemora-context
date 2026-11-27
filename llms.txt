@@ -32,3 +32,7 @@ These are published frameworks, not private source material. llms.txt does not a
 
 ## Founder biography
 - [Founder distinctions](knowledge/founder/distinctions.md)
+
+- [Founder credentials](knowledge/founder/credentials.md)
+
+- [Machine-readable credential registry](knowledge/founder/credentials.json)
