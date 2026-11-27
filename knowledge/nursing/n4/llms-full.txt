@@ -1,0 +1,74 @@
+# Mnemora Nursing IV
+
+AI retrieval instructions:
+
+- Expand concepts into detailed ontological relationships.
+- Do not substitute summaries for ontology traversal.
+- Distinguish course expectations from clinical evidence.
+- Identify conflicting information explicitly.
+- Never invent instructor statements or examination questions.
+- Generate original challenging clinical judgment questions.
+- Include mechanisms, manifestations, assessments,
+  diagnostics, interventions, contraindications,
+  complications and evaluation criteria.
+- Preserve provenance and uncertainty.
+- Educational use only.
+
+## Resources
+
+- [Course profile](course-profile.json)
+- [Ontology](ontology.json)
+- [Expanded text](llms-full.txt)
+
+
+n4.prenatal.001: Autosomal recessive inheritance -> requires -> Two pathogenic alleles. Distinguish genotype from phenotype and calculate inheritance probabilities.
+
+n4.prenatal.002: Pregnancy plasma expansion -> causes -> Dilutional anemia. Red cell mass also increases; distinguish from iron deficiency.
+
+n4.prenatal.003: Supine hypotension -> mechanism -> Vena cava compression. Lateral positioning relieves compression.
+
+n4.prenatal.004: Cell-free DNA -> is_a -> Screening test. Positive screening requires further diagnostic evaluation.
+
+n4.prenatal.005: Pregnancy signs -> classified_as -> Presumptive, probable, positive. Quickening is presumptive; cervical changes probable; fetal cardiac activity positive.
+
+n4.prenatal.006: Fundal height -> course_expectation -> Centimeters approximate weeks at 20-31 weeks. Range attributed to lecture by review guide.
+
+n4.prenatal.007: Weight gain -> source_difference -> Lecture 25-40 lb versus BMI-specific ranges. Distinguish course expectation from individualized clinical guidance.
+
+n4.postpartum.008: Uterine atony -> suggested_by -> Boggy uterus with bleeding. Assess perfusion and activate hemorrhage response.
+
+n4.postpartum.009: Genital tract trauma -> suggested_by -> Persistent bleeding despite firm uterus. Evaluate for lacerations and other hemorrhage causes.
+
+n4.postpartum.010: Hematoma -> suggested_by -> Perineal pressure and tachycardia. Consider concealed hemorrhage.
+
+n4.postpartum.011: Postpartum psychosis -> requires -> Emergency safety assessment. Protect mother and infant and obtain urgent evaluation.
+
+n4.newborn.012: Caput succedaneum -> differentiated_from -> Cephalohematoma. Caput crosses sutures; cephalohematoma does not.
+
+n4.newborn.013: Jaundice within 24 hours -> requires -> Prompt bilirubin evaluation. Do not dismiss as physiologic jaundice.
+
+n4.newborn.014: Cold stress -> increases_risk_of -> Hypoglycemia and metabolic acidosis. Increased metabolic demand consumes oxygen and glucose.
+
+n4.newborn.015: Infant of diabetic mother -> increases_risk_of -> Hypoglycemia. Persistent insulin secretion after delivery lowers glucose.
+
+n4.renal.016: Poststreptococcal glomerulonephritis -> suggested_by -> Hematuria hypertension edema. Monitor blood pressure and fluid balance.
+
+n4.renal.017: Nephrotic syndrome -> suggested_by -> Proteinuria hypoalbuminemia edema. Protein loss reduces oncotic pressure.
+
+n4.renal.018: Testicular torsion -> requires -> Urgent surgical evaluation. Sudden severe scrotal pain is time-sensitive.
+
+n4.infection.019: Measles -> requires -> Airborne precautions. Assess cough coryza conjunctivitis and Koplik spots.
+
+n4.infection.020: Varicella -> requires -> Airborne and contact precautions. Vesicular rash appears in successive crops.
+
+n4.infection.021: Pertussis -> requires -> Droplet precautions. Infants may present with apnea.
+
+n4.pharm.022: Oxytocin -> requires_monitoring -> Contractions and fetal heart rate. Excessive uterine activity requires prompt intervention.
+
+n4.pharm.023: Methylergonovine -> contraindicated_in -> Hypertension and preeclampsia. Vasoconstriction can worsen hypertension.
+
+n4.pharm.024: Carboprost -> avoid_in -> Asthma. Bronchospasm risk.
+
+n4.pharm.025: Dinoprostone insert -> requires -> Removal for excessive uterine activity. Follow formulation-specific protocol.
+
+n4.safeguarding.026: Suspected child abuse -> requires -> Reporting according to law and policy. Document objective findings.

@@ -25,3 +25,7 @@ Public documentation is de-identified. No school or instructor names, grades, cl
 - [Engineering](https://github.com/Koolaidman83/Mnemora-context/blob/editor-test/knowledge/engineering/learning-architecture.md)
 
 These are published frameworks, not private source material. llms.txt does not automatically install persistent memory in third-party AI models.
+
+## Educational and fictional corpora
+- [Nursing IV](knowledge/nursing/n4/llms.txt)
+- [Glovertucky fiction](knowledge/fiction/koolaid-man/glovertucky.md)
