@@ -1,0 +1,234 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mnemora | Local-first AI memory</title><style>:root{color-scheme:dark;font-family:system-ui,sans-serif}body{margin:0;background:#0c1221;color:#e8f0fc;line-height:1.6}main{max-width:800px;margin:auto;padding:65px 24px}h1{font-size:clamp(2.8rem,9vw,5rem);letter-spacing:-.05em}p{color:#c1ccdf}.card{border:1px solid #34415a;border-radius:18px;padding:25px;background:#151f32}a{color:#9be8d9}.button{display:inline-block;background:#8be5d4;color:#07141a;padding:13px 19px;border-radius:12px;font-weight:700;text-decoration:none}.small{font-size:.9rem}</style></head><body><main><p style="color:#8be5d4">MNEMORA · LOCAL-FIRST AI MEMORY</p><h1>Make memory useful.</h1><p>Mnemora is a working, local-first personal knowledge and AI memory system that organizes conversations, documents, study materials, and project decisions so useful context can be retrieved across tools and devices.</p>
+<!-- MNEMORA PORTAL START -->
+<style>
+
+#mnemora-portal {
+    margin: 28px 0;
+    padding: 20px;
+    border: 1px solid #34415a;
+    border-radius: 18px;
+    background: #101a2b;
+}
+.mp-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(135px,1fr));
+    gap: 10px;
+}
+.mp-card {
+    display: block;
+    padding: 15px;
+    border: 1px solid #34415a;
+    border-radius: 12px;
+    background: #18263b;
+    text-decoration: none;
+}
+.mp-card:hover {
+    border-color: #8be5d4;
+}
+.mp-card small {
+    display: block;
+    color: #b8c5d9;
+    margin-top: 6px;
+}
+.mp-search {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+}
+.mp-search input {
+    min-width: 0;
+    flex: 1;
+    padding: 12px;
+    background: #0c1221;
+    color: white;
+    border: 1px solid #34415a;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.mp-search button {
+    background: #8be5d4;
+    color: #07141a;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: bold;
+}
+.mp-result {
+    padding: 12px;
+    margin: 10px 0;
+    background: #18263b;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+</style>
+
+<section id="mnemora-portal">
+<h2>Knowledge Portal</h2>
+<p>Explore, search and contribute to Mnemora.</p>
+
+<div class="mp-grid">
+<a class="mp-card" href="knowledge/nursing/n4/llms-full.txt"><strong>Nursing IV</strong><small>Maternal-child study</small></a><a class="mp-card" href="knowledge/nursing/n4/ontology.json"><strong>Nursing Ontology</strong><small>Knowledge relationships</small></a><a class="mp-card" href="knowledge/nursing/n4/course-profile.json"><strong>Course Profile</strong><small>Course information</small></a><a class="mp-card" href="knowledge/fiction/koolaid-man/glovertucky.md"><strong>Fiction</strong><small>Kool-Aid Man chronicles</small></a><a class="mp-card" href="knowledge/ems/workflow-architecture.md"><strong>EMS</strong><small>Emergency medicine</small></a><a class="mp-card" href="knowledge/clinicals/competency-mapping.md"><strong>Clinical</strong><small>Clinical competencies</small></a><a class="mp-card" href="knowledge/engineering/learning-architecture.md"><strong>Engineering</strong><small>Technical knowledge</small></a><a class="mp-card" href="knowledge/mathematics/learning-architecture.md"><strong>Mathematics</strong><small>Mathematical knowledge</small></a><a class="mp-card" href="llms-full.txt"><strong>AI & Memory</strong><small>Mnemora architecture</small></a><a class="mp-card" href="llms.txt"><strong>AI Index</strong><small>Machine-readable context</small></a><a class="mp-card" href="https://drive.google.com/drive/folders/1UQysaCuuNYMvxs_T-wn2ii7BZ2dItJBS"><strong>Write &amp; Upload</strong><small>Private knowledge inbox</small></a>
+</div>
+
+<h2>Search Knowledge</h2>
+<form class="mp-search" id="mp-form">
+<input id="mp-query"
+       aria-label="Search public knowledge"
+       placeholder="Search Mnemora..."
+       minlength="2"
+       maxlength="120"
+       required>
+<button type="submit">Search</button>
+</form>
+
+<div id="mp-results" aria-live="polite"></div>
+
+<p>
+<a href="llms.txt">AI context</a> |
+<a href="llms-full.txt">Full context</a> |
+<a href="knowledge-index.json">AI search index</a>
+</p>
+
+<small>
+Public knowledge only. Private contributions
+remain in the authenticated inbox.
+Educational material is not clinical guidance.
+</small>
+</section>
+
+<script>
+const mpDocs = [["Nursing IV", "knowledge/nursing/n4/llms-full.txt", "Maternal-child study"], ["Nursing Ontology", "knowledge/nursing/n4/ontology.json", "Knowledge relationships"], ["Course Profile", "knowledge/nursing/n4/course-profile.json", "Course information"], ["Fiction", "knowledge/fiction/koolaid-man/glovertucky.md", "Kool-Aid Man chronicles"], ["EMS", "knowledge/ems/workflow-architecture.md", "Emergency medicine"], ["Clinical", "knowledge/clinicals/competency-mapping.md", "Clinical competencies"], ["Engineering", "knowledge/engineering/learning-architecture.md", "Technical knowledge"], ["Mathematics", "knowledge/mathematics/learning-architecture.md", "Mathematical knowledge"], ["AI & Memory", "llms-full.txt", "Mnemora architecture"], ["AI Index", "llms.txt", "Machine-readable context"]];
+
+document.getElementById("mp-form")
+.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const q = document.getElementById("mp-query")
+        .value.trim().toLowerCase();
+
+    const out = document.getElementById("mp-results");
+
+    if(q.length < 2) return;
+
+    out.textContent = "Searching knowledge...";
+
+    const results = await Promise.all(
+        mpDocs.map(async function(doc) {
+            try {
+                const response = await fetch(doc[1], {
+                    signal: AbortSignal.timeout(10000)
+                });
+
+                if(!response.ok) throw Error();
+
+                const text = await response.text();
+
+                if(/<!doctype html|<html/i.test(
+                    text.slice(0,300)
+                )) throw Error();
+
+                const lower = text.toLowerCase();
+                const matches = [];
+                let pos = 0;
+
+                while(matches.length < 5) {
+                    const i = lower.indexOf(q,pos);
+                    if(i === -1) break;
+
+                    matches.push({
+                        title: doc[0],
+                        path: doc[1],
+                        excerpt: text.slice(
+                            Math.max(0,i-100),
+                            i+q.length+200
+                        )
+                    });
+
+                    pos = i+q.length;
+                }
+
+                return {matches: matches};
+
+            } catch(err) {
+                return {unavailable: true};
+            }
+        })
+    );
+
+    out.replaceChildren();
+
+    const matches = results.flatMap(
+        r => r.matches || []
+    );
+
+    const failed = results.filter(
+        r => r.unavailable
+    ).length;
+
+    const status = document.createElement("p");
+
+    status.textContent =
+        matches.length + " matches found. " +
+        failed + " sources unavailable.";
+
+    out.appendChild(status);
+
+    for(const item of matches) {
+        const card = document.createElement("div");
+        card.className = "mp-result";
+
+        const link = document.createElement("a");
+        link.href = item.path;
+        link.textContent = item.title;
+
+        const excerpt = document.createElement("p");
+        excerpt.textContent = item.excerpt;
+
+        card.append(link,excerpt);
+        out.appendChild(card);
+    }
+});
+</script>
+<!-- MNEMORA PORTAL END -->
+<div class="card"><h2>Project bio</h2><p>Built around a private memory hub, searchable source index, portable device workers, and AI integration adapters. Its priorities are preserving original information, making context reusable, and keeping the owner in control of private data.</p><p><strong>Status:</strong> Operational system, under active development. The SQLite memory service, local worker infrastructure, and private Tailscale connectivity have run on real hardware. Broader cross-AI integration and automated callbacks remain works in progress.</p></div><h2>Request a callback</h2><p>Use a GitHub issue to request follow-up. <strong>GitHub issues are public.</strong> Do not enter your phone number, email address, credentials, medical information, or other private data.</p><a class="button" href="https://github.com/Koolaidman83/Mnemora-context/issues/new?title=Callback%20request%3A%20Mnemora&amp;body=Topic%3A%20%0A%0APreferred%20contact%20method%20(no%20private%20details)%3A%20">Request callback on GitHub</a><p class="small">GitHub sign-in required. This is a callback-request page, not an automated phone callback or webhook service.</p><p><a href="https://github.com/Koolaidman83/Mnemora-context">Public source repository</a></p><section class="panel" id="founder"><h2 style="margin-top:0">About the Founder</h2><p><strong>Mike</strong> is a career paramedic with more than three decades of emergency medical services experience, a nursing student, and an independent engineer and technology developer.</p><p>His work spans advanced life support and prehospital emergency care, clinical education, Linux and Android systems, distributed computing, hardware restoration, and local artificial intelligence. He has built and operated practical systems on repurposed computers and phones, with a particular interest in making older equipment useful again.</p><p>While balancing emergency medical work with nursing school, Mike built Mnemora to connect knowledge scattered across conversations, lecture recordings, textbooks, technical projects, and devices. Mnemora has operated as a real network of services and workers, including a SQLite-backed memory API, local processing, and private device connectivity. Its ongoing development focuses on reliability, safe workload distribution, and carrying useful context between AI tools. His interests extend to critical care, medical education, communications, sensing, and resilient personal computing.</p></section>
+<section id="honorary-titles" class="card">
+<h2>Ecclesiastical and Culinary Distinctions</h2>
+<ul>
+<li>Minister of the Universal Life Church</li>
+<li>Ordained Dudeist priest</li>
+<li>Self-designated honorary Pope</li>
+<li>King of Spaghetti Sauce</li>
+<li>Defender of the Garlic</li>
+<li>Sovereign of the Simmering Pot</li>
+<li>Supreme Commander of the Tomato Republic</li>
+</ul>
+<p>Ministerial credentials are self-reported.
+Royal and papal titles are humorous honorary
+designations.</p>
+<p>The Dude abides. The sauce simmers.</p>
+</section>
+
+<div class="card" id="founder-distinctions">
+<h2>Founder Distinctions</h2>
+<p>Paramedic, engineer, peace proposal author,
+minister, honorary Pope and King of Spaghetti
+Sauce.</p>
+<p><a href="knowledge/founder/distinctions.md">
+Professional, diplomatic and honorary biography
+</a></p>
+<p><i>The Dude abides. The sauce simmers.
+The servers synchronize.</i></p>
+</div>
+
+<div class="card" id="founder-credentials">
+<h2>Professional and Academic Credentials</h2>
+<p>Finance, engineering, medicine, emergency
+services, communications, diplomacy and
+distributed AI systems.</p>
+<p><a href="knowledge/founder/credentials.md">
+Full credentials portfolio</a></p>
+<p><a href="knowledge/founder/credentials.json">
+Machine-readable credential registry</a></p>
+</div>
+</main></body></html>

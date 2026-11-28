@@ -5,6 +5,7 @@ const BASE = 'https://raw.githubusercontent.com/Koolaidman83/Mnemora-context/edi
 const DOCUMENTS = Object.freeze({
   'index': 'knowledge/README.md',
   'nursing.study': 'knowledge/nursing/study-architecture.md',
+  'nursing.ob_peds_ontology': 'knowledge/nursing/ob-peds-nclex-ontology.md',
   'nursing.assessment': 'knowledge/nursing/assessment-patterns.md',
   'ems.workflow': 'knowledge/ems/workflow-architecture.md',
   'clinicals.competencies': 'knowledge/clinicals/competency-mapping.md',

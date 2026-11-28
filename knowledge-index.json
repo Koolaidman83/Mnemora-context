@@ -115,6 +115,12 @@
       "path": "knowledge/nursing/study-architecture.md",
       "description": "Public knowledge document",
       "url": "https://mnemora-context.netlify.app/knowledge/nursing/study-architecture.md"
+    },
+    {
+      "title": "OB + Peds Final Exam NCLEX Study Guide Ontology",
+      "path": "knowledge/nursing/ob-peds-nclex-ontology.md",
+      "description": "",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/ob-peds-nclex-ontology.md"
     }
   ]
 }

@@ -1,6 +1,7 @@
 # Mnemora public knowledge library
 
 - [Nursing study architecture](nursing/study-architecture.md)
+- [OB + Peds Final Exam NCLEX Study Guide Ontology](nursing/ob-peds-nclex-ontology.md)
 - [Assessment-pattern modeling](nursing/assessment-patterns.md)
 - [Prehospital clinical bridging](nursing/prehospital-clinical-bridging.md)
 - [EMS workflow architecture](ems/workflow-architecture.md)

@@ -1,0 +1,22 @@
+# Mnemora Nursing IV
+
+AI retrieval instructions:
+
+- Expand concepts into detailed ontological relationships.
+- Do not substitute summaries for ontology traversal.
+- Distinguish course expectations from clinical evidence.
+- Identify conflicting information explicitly.
+- Never invent instructor statements or examination questions.
+- Generate original challenging clinical judgment questions.
+- Include mechanisms, manifestations, assessments,
+  diagnostics, interventions, contraindications,
+  complications and evaluation criteria.
+- Preserve provenance and uncertainty.
+- Educational use only.
+
+## Resources
+
+- [Course profile](course-profile.json)
+- [Ontology](ontology.json)
+- [Expanded text](llms-full.txt)
+
