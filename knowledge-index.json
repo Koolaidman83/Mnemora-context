@@ -61,6 +61,60 @@
       "path": "llms.txt",
       "description": "Machine-readable context",
       "url": "https://mnemora-context.netlify.app/llms.txt"
+    },
+    {
+      "title": "Readme",
+      "path": "knowledge/README.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/README.md"
+    },
+    {
+      "title": "Credentials",
+      "path": "knowledge/founder/credentials.json",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/founder/credentials.json"
+    },
+    {
+      "title": "Credentials",
+      "path": "knowledge/founder/credentials.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/founder/credentials.md"
+    },
+    {
+      "title": "Distinctions",
+      "path": "knowledge/founder/distinctions.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/founder/distinctions.md"
+    },
+    {
+      "title": "Source Provenance",
+      "path": "knowledge/interoperability/source-provenance.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/interoperability/source-provenance.md"
+    },
+    {
+      "title": "Assessment Patterns",
+      "path": "knowledge/nursing/assessment-patterns.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/assessment-patterns.md"
+    },
+    {
+      "title": "Llms",
+      "path": "knowledge/nursing/n4/llms.txt",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/llms.txt"
+    },
+    {
+      "title": "Prehospital Clinical Bridging",
+      "path": "knowledge/nursing/prehospital-clinical-bridging.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/prehospital-clinical-bridging.md"
+    },
+    {
+      "title": "Study Architecture",
+      "path": "knowledge/nursing/study-architecture.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/study-architecture.md"
     }
   ]
 }
