@@ -53,6 +53,16 @@
       "sha256": "df354d4c47f044fcf9b1f0842a4bb2eefe60ff55183e72d9a1424c52b4875368"
     },
     {
+      "id": "doc.0ef7cfd0e8b81be869192124",
+      "path": "knowledge/fiction/koolaid-man/koolaidmanuniverse-ca4e1b64e8b9.md",
+      "title": "Koolaidmanuniverse Ca4E1B64E8B9",
+      "description": "Public knowledge document",
+      "category": "knowledge/fiction/koolaid-man",
+      "visibility": "public",
+      "url": "https://mnemora-context.netlify.app/knowledge/fiction/koolaid-man/koolaidmanuniverse-ca4e1b64e8b9.md",
+      "sha256": "ca4e1b64e8b98914595659b7ca769e0b58bb24333e778a99e2955d47e35f6fd7"
+    },
+    {
       "title": "Credentials",
       "path": "knowledge/founder/credentials.json",
       "description": "Public knowledge document",
@@ -210,7 +220,7 @@
       "id": "llms",
       "category": ".",
       "visibility": "public",
-      "sha256": "e99df185c44be722e5c2a9f09ecc4b867a35e5a62c2e3699adb42d47410d661e"
+      "sha256": "532d15d33c67a79affa1c53a60357b1cc5a0f9c8ae6b4d572f59ed5c0804b1db"
     }
   ]
 }
