@@ -3,124 +3,204 @@
   "visibility": "public",
   "documents": [
     {
-      "title": "Nursing IV",
-      "path": "knowledge/nursing/n4/llms-full.txt",
-      "description": "Maternal-child study",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/llms-full.txt"
-    },
-    {
-      "title": "Nursing Ontology",
-      "path": "knowledge/nursing/n4/ontology.json",
-      "description": "Knowledge relationships",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/ontology.json"
-    },
-    {
-      "title": "Course Profile",
-      "path": "knowledge/nursing/n4/course-profile.json",
-      "description": "Course information",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/course-profile.json"
-    },
-    {
-      "title": "Fiction",
-      "path": "knowledge/fiction/koolaid-man/glovertucky.md",
-      "description": "Kool-Aid Man chronicles",
-      "url": "https://mnemora-context.netlify.app/knowledge/fiction/koolaid-man/glovertucky.md"
-    },
-    {
-      "title": "EMS",
-      "path": "knowledge/ems/workflow-architecture.md",
-      "description": "Emergency medicine",
-      "url": "https://mnemora-context.netlify.app/knowledge/ems/workflow-architecture.md"
+      "title": "Readme",
+      "path": "knowledge/README.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/README.md",
+      "id": "index",
+      "category": "knowledge",
+      "visibility": "public",
+      "sha256": "7999ebfe114b865269a015bcaf3b9505a1fc5eaff8f43ee7a27a034a14dc6af8"
     },
     {
       "title": "Clinical",
       "path": "knowledge/clinicals/competency-mapping.md",
       "description": "Clinical competencies",
-      "url": "https://mnemora-context.netlify.app/knowledge/clinicals/competency-mapping.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/clinicals/competency-mapping.md",
+      "id": "clinicals.competencies",
+      "category": "knowledge/clinicals",
+      "visibility": "public",
+      "sha256": "c21716426d0528ade1d187e8319c33f1ce4fd227de229c3c6c2880f9b2dfdff2"
+    },
+    {
+      "title": "EMS",
+      "path": "knowledge/ems/workflow-architecture.md",
+      "description": "Emergency medicine",
+      "url": "https://mnemora-context.netlify.app/knowledge/ems/workflow-architecture.md",
+      "id": "ems.workflow",
+      "category": "knowledge/ems",
+      "visibility": "public",
+      "sha256": "7d3a509720028492919518fbcdb600c1b213a717c20ecacfcac66036763c6d48"
     },
     {
       "title": "Engineering",
       "path": "knowledge/engineering/learning-architecture.md",
       "description": "Technical knowledge",
-      "url": "https://mnemora-context.netlify.app/knowledge/engineering/learning-architecture.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/engineering/learning-architecture.md",
+      "id": "engineering.learning",
+      "category": "knowledge/engineering",
+      "visibility": "public",
+      "sha256": "db6ae0190d51491f791715b296382f1766263f3a585063469e898784e378bc8c"
     },
     {
-      "title": "Mathematics",
-      "path": "knowledge/mathematics/learning-architecture.md",
-      "description": "Mathematical knowledge",
-      "url": "https://mnemora-context.netlify.app/knowledge/mathematics/learning-architecture.md"
-    },
-    {
-      "title": "AI & Memory",
-      "path": "llms-full.txt",
-      "description": "Mnemora architecture",
-      "url": "https://mnemora-context.netlify.app/llms-full.txt"
-    },
-    {
-      "title": "AI Index",
-      "path": "llms.txt",
-      "description": "Machine-readable context",
-      "url": "https://mnemora-context.netlify.app/llms.txt"
-    },
-    {
-      "title": "Readme",
-      "path": "knowledge/README.md",
-      "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/README.md"
+      "title": "Fiction",
+      "path": "knowledge/fiction/koolaid-man/glovertucky.md",
+      "description": "Kool-Aid Man chronicles",
+      "url": "https://mnemora-context.netlify.app/knowledge/fiction/koolaid-man/glovertucky.md",
+      "id": "doc.9fd63d19fdc5175b4a43bee4",
+      "category": "knowledge/fiction/koolaid-man",
+      "visibility": "public",
+      "sha256": "df354d4c47f044fcf9b1f0842a4bb2eefe60ff55183e72d9a1424c52b4875368"
     },
     {
       "title": "Credentials",
       "path": "knowledge/founder/credentials.json",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/founder/credentials.json"
+      "url": "https://mnemora-context.netlify.app/knowledge/founder/credentials.json",
+      "id": "doc.ef4bddc7b5c09c97545d51ee",
+      "category": "knowledge/founder",
+      "visibility": "public",
+      "sha256": "031d17c8fb4fb5f9bdcc06171b1356e17de3317cbce641b3cebcbd63afc90b3e"
     },
     {
       "title": "Credentials",
       "path": "knowledge/founder/credentials.md",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/founder/credentials.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/founder/credentials.md",
+      "id": "doc.533ec441586525e07605eab5",
+      "category": "knowledge/founder",
+      "visibility": "public",
+      "sha256": "9253d006d531c3932fb328b30af20ab19729994238843524c473becbe33d1144"
     },
     {
       "title": "Distinctions",
       "path": "knowledge/founder/distinctions.md",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/founder/distinctions.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/founder/distinctions.md",
+      "id": "doc.f7da8802775b231ecdc8995c",
+      "category": "knowledge/founder",
+      "visibility": "public",
+      "sha256": "c179a7407a3edfbd1e85cb18fe30c7a4ef9480f44885b3939c9693c8536acb22"
     },
     {
       "title": "Source Provenance",
       "path": "knowledge/interoperability/source-provenance.md",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/interoperability/source-provenance.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/interoperability/source-provenance.md",
+      "id": "interoperability.provenance",
+      "category": "knowledge/interoperability",
+      "visibility": "public",
+      "sha256": "c8fb752d1e5f8d57a7947f04d01a644799d16128bd01c47469adb73f2c1c713c"
+    },
+    {
+      "title": "Mathematics",
+      "path": "knowledge/mathematics/learning-architecture.md",
+      "description": "Mathematical knowledge",
+      "url": "https://mnemora-context.netlify.app/knowledge/mathematics/learning-architecture.md",
+      "id": "mathematics.learning",
+      "category": "knowledge/mathematics",
+      "visibility": "public",
+      "sha256": "f398fbd620a138c48c415100004a376176df0c737b1ed059eabb6b484463822c"
     },
     {
       "title": "Assessment Patterns",
       "path": "knowledge/nursing/assessment-patterns.md",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/assessment-patterns.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/assessment-patterns.md",
+      "id": "nursing.assessment",
+      "category": "knowledge/nursing",
+      "visibility": "public",
+      "sha256": "34406e781fbe4ccc8ab7d83c7ddebd48a9635c9f26665bdb9186b8adc3c2a124"
+    },
+    {
+      "title": "Course Profile",
+      "path": "knowledge/nursing/n4/course-profile.json",
+      "description": "Course information",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/course-profile.json",
+      "id": "doc.e7a6e8e8e1c60168d9449ea1",
+      "category": "knowledge/nursing/n4",
+      "visibility": "public",
+      "sha256": "36c00253f5eebb450af2e2faa705d5ae9bd39fcac7ac558819f14c907df6f3df"
+    },
+    {
+      "title": "Nursing IV",
+      "path": "knowledge/nursing/n4/llms-full.txt",
+      "description": "Maternal-child study",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/llms-full.txt",
+      "id": "doc.4b9faa05fe69cc81a7fb0a76",
+      "category": "knowledge/nursing/n4",
+      "visibility": "public",
+      "sha256": "1a610a2046674b22d70363f35de5d305e2dcb981cbb5068c5f9644010dc4dfca"
     },
     {
       "title": "Llms",
       "path": "knowledge/nursing/n4/llms.txt",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/llms.txt"
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/llms.txt",
+      "id": "doc.4dc8c217969d0752589bcc05",
+      "category": "knowledge/nursing/n4",
+      "visibility": "public",
+      "sha256": "445652164b769607c3183fbe2bcda4e4b97e30a2bb13ba85b0c44498b43e4f5f"
+    },
+    {
+      "title": "Nursing Ontology",
+      "path": "knowledge/nursing/n4/ontology.json",
+      "description": "Knowledge relationships",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/n4/ontology.json",
+      "id": "doc.1500275757fc18ba1e89c1e4",
+      "category": "knowledge/nursing/n4",
+      "visibility": "public",
+      "sha256": "e860a7f45ef722c965ca29b27dc4a5bb60933a378e055fc8970b48ad07bc86b8"
+    },
+    {
+      "title": "OB + Peds Final Exam NCLEX Study Guide Ontology",
+      "path": "knowledge/nursing/ob-peds-nclex-ontology.md",
+      "description": "Public knowledge document",
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/ob-peds-nclex-ontology.md",
+      "id": "nursing.ob_peds_ontology",
+      "category": "knowledge/nursing",
+      "visibility": "public",
+      "sha256": "c5eebb3b3347f264677ecffb6489f06e367373267bc5f966f2dcf7c7b502f68d"
     },
     {
       "title": "Prehospital Clinical Bridging",
       "path": "knowledge/nursing/prehospital-clinical-bridging.md",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/prehospital-clinical-bridging.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/prehospital-clinical-bridging.md",
+      "id": "doc.84c01a0ab13799e42206c64d",
+      "category": "knowledge/nursing",
+      "visibility": "public",
+      "sha256": "5f62f6843873f59f50fb1779678aa253d88fa1ae010869a7041cac2b4e43e28d"
     },
     {
       "title": "Study Architecture",
       "path": "knowledge/nursing/study-architecture.md",
       "description": "Public knowledge document",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/study-architecture.md"
+      "url": "https://mnemora-context.netlify.app/knowledge/nursing/study-architecture.md",
+      "id": "nursing.study",
+      "category": "knowledge/nursing",
+      "visibility": "public",
+      "sha256": "d195a4912faf736d773c105ee386604c5e899d2d34698443f6b3997c1054a5bf"
     },
     {
-      "title": "OB + Peds Final Exam NCLEX Study Guide Ontology",
-      "path": "knowledge/nursing/ob-peds-nclex-ontology.md",
-      "description": "",
-      "url": "https://mnemora-context.netlify.app/knowledge/nursing/ob-peds-nclex-ontology.md"
+      "title": "AI & Memory",
+      "path": "llms-full.txt",
+      "description": "Mnemora architecture",
+      "url": "https://mnemora-context.netlify.app/llms-full.txt",
+      "id": "llms.full",
+      "category": ".",
+      "visibility": "public",
+      "sha256": "6bb1130e425a11ac2ca1d1c9e36c595c7f23ef25f10b8c2fe62efe2fb59ea094"
+    },
+    {
+      "title": "AI Index",
+      "path": "llms.txt",
+      "description": "Machine-readable context",
+      "url": "https://mnemora-context.netlify.app/llms.txt",
+      "id": "llms",
+      "category": ".",
+      "visibility": "public",
+      "sha256": "e99df185c44be722e5c2a9f09ecc4b867a35e5a62c2e3699adb42d47410d661e"
     }
   ]
 }

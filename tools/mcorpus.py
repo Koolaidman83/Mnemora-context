@@ -3,21 +3,60 @@ import argparse,json,re,subprocess,sys,shutil
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 BASE='https://mnemora-context.netlify.app/'
-def git(*a): subprocess.run(['git','-C',str(R),*a],check=True)
+def git(*a): subprocess.run(['git','--no-pager','-C',str(R),*a],check=True)
+LEGACY_IDS = {'index': 'knowledge/README.md', 'nursing.study': 'knowledge/nursing/study-architecture.md', 'nursing.ob_peds_ontology': 'knowledge/nursing/ob-peds-nclex-ontology.md', 'nursing.assessment': 'knowledge/nursing/assessment-patterns.md', 'ems.workflow': 'knowledge/ems/workflow-architecture.md', 'clinicals.competencies': 'knowledge/clinicals/competency-mapping.md', 'mathematics.learning': 'knowledge/mathematics/learning-architecture.md', 'engineering.learning': 'knowledge/engineering/learning-architecture.md', 'interoperability.provenance': 'knowledge/interoperability/source-provenance.md', 'llms': 'llms.txt', 'llms.full': 'llms-full.txt'}
+
 def registry(write=False):
- p=R/'knowledge-index.json'; data=json.loads(p.read_text()); docs=data['documents']; known={d['path'] for d in docs}
- for f in sorted((R/'knowledge').rglob('*')):
-  if f.is_symlink(): raise ValueError(f'Symlink forbidden: {f}')
-  if not f.is_file() or f.suffix.lower() not in ('.md','.txt','.json'): continue
-  rel=f.relative_to(R).as_posix(); content=f.read_text(encoding='utf-8')
-  if f.suffix=='.json': json.loads(content)
-  if re.search(r'-----BEGIN [A-Z ]*PRIVATE KEY-----|\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}|\bghp_[A-Za-z0-9]{20,}',content): raise ValueError(f'Possible credential: {rel}')
-  if rel not in known: docs.append(dict(title=f.stem.replace('-',' ').title(),path=rel,description='Public knowledge document',url=BASE+rel)); known.add(rel)
- for d in docs:
-  f=(R/d['path']).resolve()
-  if not f.is_relative_to(R) or not f.is_file(): raise ValueError('Invalid registry path: '+d['path'])
- if write: p.write_text(json.dumps(data,indent=2)+'\n')
- print(f'{len(docs)} registered documents; basic validation passed. Manual privacy review still required.')
+ import hashlib
+ from urllib.parse import quote
+ p=R/'knowledge-index.json'
+ data=json.loads(p.read_text())
+ old={d['path']:d for d in data['documents']}
+ docs=[]
+ paths=set()
+ aliases=LEGACY_IDS
+ candidates=list((R/'knowledge').rglob('*'))
+ candidates += [R/'llms.txt', R/'llms-full.txt']
+ for f in sorted(candidates):
+  if f.is_symlink():
+   raise ValueError(f'Symlink forbidden: {f}')
+  if not f.is_file():
+   continue
+  if f.suffix.lower() not in ('.md','.txt','.json'):
+   continue
+  rel=f.relative_to(R).as_posix()
+  if not re.fullmatch(r'[A-Za-z0-9_./ -]+',rel):
+   raise ValueError(f'Unsupported path: {rel}')
+  content=f.read_text(encoding='utf-8')
+  if f.suffix.lower()=='.json':
+   json.loads(content)
+  if re.search(r'-----BEGIN [A-Z ]*PRIVATE KEY-----|\\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}|\\bghp_[A-Za-z0-9]{20,}',content):
+   raise ValueError(f'Possible credential: {rel}')
+  d=dict(old.get(rel,{}))
+  legacy=next((k for k,v in aliases.items() if v==rel),None)
+  stable='doc.'+hashlib.sha256(rel.encode()).hexdigest()[:24]
+  d['id']=legacy or d.get('id') or stable
+  d['path']=rel
+  d['title']=d.get('title') or f.stem.replace('-',' ').replace('_',' ').title()
+  d['description']=d.get('description') or 'Public knowledge document'
+  d['category']=str(Path(rel).parent)
+  d['visibility']='public'
+  d['url']=BASE+quote(rel)
+  d['sha256']=hashlib.sha256(f.read_bytes()).hexdigest()
+  docs.append(d)
+  paths.add(rel)
+ ids=[d['id'] for d in docs]
+ if len(ids)!=len(set(ids)):
+  raise ValueError('Duplicate document IDs')
+ data['documents']=docs
+ data['visibility']='public'
+ if write:
+  tmp=p.with_suffix('.tmp')
+  tmp.write_text(json.dumps(data,indent=2)+'\n')
+  tmp.replace(p)
+ print(f'{len(docs)} documents discovered recursively.')
+ print('Basic validation passed. Manual privacy review required.')
+
 def main():
  p=argparse.ArgumentParser(); p.add_argument('command',choices=['add','validate','index','sync','publish','ai','status']); p.add_argument('source',nargs='?'); p.add_argument('--category',default='general'); a=p.parse_args()
  if a.command=='add':

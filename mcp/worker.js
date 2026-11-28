@@ -2,19 +2,57 @@
 // Read-only MCP over Streamable HTTP, deployed as a Cloudflare Worker.
 // No private memory, device controls, or arbitrary URL fetching.
 const BASE = 'https://raw.githubusercontent.com/Koolaidman83/Mnemora-context/editor-test/';
-const DOCUMENTS = Object.freeze({
-  'index': 'knowledge/README.md',
-  'nursing.study': 'knowledge/nursing/study-architecture.md',
-  'nursing.ob_peds_ontology': 'knowledge/nursing/ob-peds-nclex-ontology.md',
-  'nursing.assessment': 'knowledge/nursing/assessment-patterns.md',
-  'ems.workflow': 'knowledge/ems/workflow-architecture.md',
-  'clinicals.competencies': 'knowledge/clinicals/competency-mapping.md',
-  'mathematics.learning': 'knowledge/mathematics/learning-architecture.md',
-  'engineering.learning': 'knowledge/engineering/learning-architecture.md',
-  'interoperability.provenance': 'knowledge/interoperability/source-provenance.md',
-  'llms': 'llms.txt',
-  'llms.full': 'llms-full.txt'
+
+const LEGACY = Object.freeze({
+  "index": "knowledge/README.md",
+  "nursing.study": "knowledge/nursing/study-architecture.md",
+  "nursing.ob_peds_ontology": "knowledge/nursing/ob-peds-nclex-ontology.md",
+  "nursing.assessment": "knowledge/nursing/assessment-patterns.md",
+  "ems.workflow": "knowledge/ems/workflow-architecture.md",
+  "clinicals.competencies": "knowledge/clinicals/competency-mapping.md",
+  "mathematics.learning": "knowledge/mathematics/learning-architecture.md",
+  "engineering.learning": "knowledge/engineering/learning-architecture.md",
+  "interoperability.provenance": "knowledge/interoperability/source-provenance.md",
+  "llms": "llms.txt",
+  "llms.full": "llms-full.txt"
 });
+
+async function loadDocuments() {
+  const response = await fetch(
+    BASE + 'knowledge-index.json',
+    {cf:{cacheTtl:60,cacheEverything:true}}
+  );
+  if (!response.ok) {
+    throw new Error('Public registry unavailable');
+  }
+  const data = await response.json();
+  if (data.visibility !== 'public' ||
+      !Array.isArray(data.documents)) {
+    throw new Error('Invalid public registry');
+  }
+  const docs = Object.create(null);
+  for (const d of data.documents) {
+    if (d.visibility !== 'public') continue;
+    if (typeof d.id !== 'string' ||
+        typeof d.path !== 'string') continue;
+    const path = d.path;
+    if (!/^[A-Za-z0-9_./ -]+$/.test(path)) continue;
+    if (path.split('/').some(
+        x => !x || x === '..' || x === '.')) continue;
+    if (!(path.startsWith('knowledge/') ||
+          path === 'llms.txt' ||
+          path === 'llms-full.txt')) continue;
+    if (!/\.(md|txt|json)$/i.test(path)) continue;
+    docs[d.id] = path;
+  }
+  for (const [id,path] of Object.entries(LEGACY)) {
+    if (Object.values(docs).includes(path)) {
+      docs[id] = path;
+    }
+  }
+  return docs;
+}
+
 const TOOLS = [
   {name:'knowledge_list', description:'List public Mnemora knowledge documents and IDs.', inputSchema:{type:'object',properties:{},additionalProperties:false}},
   {name:'knowledge_get', description:'Read one allowlisted public Mnemora document by ID.', inputSchema:{type:'object',properties:{id:{type:'string',description:'ID from knowledge_list'}},required:['id'],additionalProperties:false}},
@@ -24,19 +62,20 @@ const HEADERS = {'Content-Type':'application/json; charset=utf-8','Cache-Control
 function json(data,status=200,extra={}) {return new Response(JSON.stringify(data),{status,headers:{...HEADERS,...extra}});}
 function rpc(id,result) {return {jsonrpc:'2.0',id,result};}
 function err(id,code,message) {return {jsonrpc:'2.0',id,error:{code,message}};}
-async function read(id) {
+async function read(id, DOCUMENTS) {
   if (!Object.hasOwn(DOCUMENTS,id)) throw new Error('Unknown document ID');
-  const response = await fetch(BASE+DOCUMENTS[id], {headers:{'Accept':'text/plain'},cf:{cacheTtl:60,cacheEverything:true}});
+  const response = await fetch(BASE+encodeURI(DOCUMENTS[id]), {headers:{'Accept':'text/plain'},cf:{cacheTtl:60,cacheEverything:true}});
   if (!response.ok) throw new Error('Document unavailable ('+response.status+'): '+id);
   const content=await response.text();
   if (content.length>150000) throw new Error('Document exceeds size limit');
   return content;
 }
 async function toolCall(name,args) {
+  const DOCUMENTS = await loadDocuments();
   if (name==='knowledge_list') return {content:[{type:'text',text:JSON.stringify(Object.entries(DOCUMENTS).map(([id,path])=>({id,path,url:BASE+path})),null,2)}]};
   if (name==='knowledge_get') {
     if (typeof args?.id!=='string'||!Object.hasOwn(DOCUMENTS,args.id)) return {isError:true,content:[{type:'text',text:'Unknown document ID. Call knowledge_list first.'}]};
-    const content=await read(args.id);
+    const content=await read(args.id,DOCUMENTS);
     return {content:[{type:'text',text:'Source: '+BASE+DOCUMENTS[args.id]+'\n\n'+content}]};
   }
   if (name==='knowledge_search') {
@@ -45,7 +84,7 @@ async function toolCall(name,args) {
     const hits=[];
     for (const id of Object.keys(DOCUMENTS)) {
       let content;
-      try {content=await read(id);} catch(e) {continue;}
+      try {content=await read(id,DOCUMENTS);} catch(e) {continue;}
       const lower=content.toLowerCase();let pos=0,count=0;
       while ((pos=lower.indexOf(q,pos))!==-1 && count<3 && hits.length<24) {
         hits.push({id,url:BASE+DOCUMENTS[id],excerpt:content.slice(Math.max(0,pos-140),Math.min(content.length,pos+q.length+220))});
